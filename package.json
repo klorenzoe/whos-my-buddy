@@ -1,0 +1,41 @@
+{
+  "name": "whos-my-buddy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "dotenv -e environment/.env.dev -- tsx watch src/server.ts",
+    "migrate:dev": "dotenv -e environment/.env.dev -- npx prisma migrate dev",
+    "migrate:reset": "dotenv -e environment/.env.dev -- npx prisma migrate reset --force",
+    "migrate:format": "npx prisma format",
+    "migrate:data": "dotenv -e environment/.env.dev -- ts-node scripts/db-data-migration.ts",
+    "db:reestablish": "dotenv -e environment/.env.dev -- sh -c \"npx prisma format && npx prisma migrate reset --force && npx prisma migrate dev --name mgt -- prisma generate\"",
+    "build": "tsc -p .",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@as-integrations/express4": "^1.1.2",
+    "@aws-sdk/client-s3": "^3.892.0",
+    "@prisma/client": "^6.16.2",
+    "ajv-formats": "^3.0.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "json-schema-to-ts": "^3.1.1",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/ajv": "^1.0.4",
+    "@types/express": "^4.17.23",
+    "@types/node": "^22.7.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "ajv": "^8.17.1",
+    "dotenv-cli": "^10.0.0",
+    "prisma": "^6.16.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

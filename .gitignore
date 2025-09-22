@@ -1,0 +1,11 @@
+*.aws-sam
+*node_modules
+dist/
+packaged.yml
+
+
+# misc
+.DS_Store
+.env.*
+.env
+/src/generated/prisma
